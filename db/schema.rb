@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_03_130037) do
+ActiveRecord::Schema[7.0].define(version: 2022_11_03_132047) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -41,6 +41,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_03_130037) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "author_id", null: false
+    t.string "address"
+    t.index ["address"], name: "index_posts_on_address"
     t.index ["author_id"], name: "index_posts_on_author_id"
   end
 
@@ -51,6 +53,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_03_130037) do
     t.integer "PostsCounter"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
+    t.index ["address"], name: "index_users_on_address"
   end
 
   add_foreign_key "comments", "posts"
