@@ -56,7 +56,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
 
   # testing framework
-  gem 'rspec-rails', '~> 3.5'
+  gem 'rspec-rails', '~> 6.0.0'
 
   # replaces Rails fixtures for generating data to use in the tests
   gem 'factory_bot_rails'
@@ -66,6 +66,10 @@ group :development, :test do
 
   # allows us to manage our testing database with precision: we decide when to wipe data (e.g. after, before tests)
   gem 'database_cleaner'
+
+  gem 'rspec-support', '~> 3.12.0'
+
+  gem 'ffi', '~> 1.15', '>= 1.15.5'
 end
 
 group :development do
