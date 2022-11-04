@@ -51,6 +51,21 @@ gem 'bootsnap', require: false
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: %i[mri mingw x64_mingw]
+
+  # allows for step-through debugging by placing byebug anywhere in the app
+  gem 'byebug', platform: :mri
+
+  # testing framework
+  gem 'rspec-rails', '~> 3.5'
+
+  # replaces Rails fixtures for generating data to use in the tests
+  gem 'factory_bot_rails'
+
+  # provides helper methods that make integration testing easier
+  gem 'capybara'
+
+  # allows us to manage our testing database with precision: we decide when to wipe data (e.g. after, before tests)
+  gem 'database_cleaner'
 end
 
 group :development do
@@ -66,7 +81,6 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem 'capybara'
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
