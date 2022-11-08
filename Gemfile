@@ -70,6 +70,10 @@ group :development, :test do
   gem 'rspec-support', '~> 3.12.0'
 
   gem 'ffi', '~> 1.15', '>= 1.15.5'
+
+  gem 'rspec', '~> 3.12'
+
+  gem 'rails-controller-testing'
 end
 
 group :development do

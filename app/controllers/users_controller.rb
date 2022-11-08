@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   def index
-    @users.all
+    @users = User.all
   end
 
   def show
-    @user = Users.find(params[:id])
+    @user = User.where(id: params[:user_id])
   end
 end
