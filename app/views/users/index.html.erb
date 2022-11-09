@@ -1,1 +1,6 @@
-<p>List of all users</p>
+<h1>List of all users</h1>
+<% @user.each do |user| %>
+    Photo: <%= user.Photo %>
+    Name: <%= user.Name %>
+<% end %>
+
