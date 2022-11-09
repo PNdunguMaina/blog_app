@@ -1,6 +1,8 @@
-<h1>List of all users</h1>
-<% @user.each do |user| %>
+<% @users.each do |user| %>
+    <div>
     Photo: <%= user.Photo %>
     Name: <%= user.Name %>
-<% end %>
+    No. of posts: <%= user.PostsCounter %>
+    </div>
+<% end %><br>
 

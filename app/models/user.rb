@@ -16,6 +16,7 @@ class User < ApplicationRecord
   end
 
   private
+
   def init_posts
     self.PostsCounter ||= 0
   end

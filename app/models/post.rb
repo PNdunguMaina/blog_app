@@ -22,7 +22,6 @@ class Post < ApplicationRecord
     update(LikesCounter: likes.count)
   end
 
-
   private
 
   def init
@@ -32,5 +31,5 @@ class Post < ApplicationRecord
 
   def update_post_counter
     author.increment!(:PostsCounter)
-  end 
+  end
 end
