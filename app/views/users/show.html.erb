@@ -1,1 +1,18 @@
 <p>List a certain author</p>
+<div>
+    <%= @user.Photo %>
+    <%= @user.Name %>
+    <%= @user.PostsCounter %><br>
+    <h3>Bio</h3>
+    <%= @user.Bio %><br>
+    <div>
+   
+    <% @user.three_recent_posts.each do |post| %>
+        <h3>Post #<%= post.id %></h3>
+        <%= post.Title %><br>
+        <%= post.Text %><br>
+        .......................
+    <% end %>
+    </div>
+</div>
+<button>See all posts</button>
