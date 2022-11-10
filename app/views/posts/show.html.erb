@@ -1,1 +1,25 @@
-<p> List a specific post of an author</p>
+<div class="container mt-4">
+    <div class="border border-dark">
+        <h2>Post #<%= @post.id %> by <%= @user.Name %></h2>
+        <p class="fs-5 text-secondary justify-content-end d-flex">
+        Comments: <%= @post.CommentsCounter %>,
+        Likes: <%= @post.LikesCounter %> 
+        </p>
+        <h3><%= @post.Title %></h3>
+        <p><%= @post.Text %><br><p>
+    </div>
+    <div>
+        <% @comments.each_with_index do |comment, idx| %>
+            <p>
+                Comment <%= idx + 1 %>: <%= comment.Text %>
+            </p>
+        <% end %>
+    </div>
+    <div class="container align-items-center">
+    <%= link_to "/users/#{@user.id}/posts/", class: "btn btn-primary mt-4" do %>
+        Back
+    <% end %>
+</div>
+    
+</div>
+

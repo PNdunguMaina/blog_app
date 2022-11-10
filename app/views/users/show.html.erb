@@ -1,1 +1,26 @@
-<p>List a certain author</p>
+<div class="container-fluid m-4">
+
+<div class="container border border-dark mb-4">
+    <%= render 'shared/user', name: @user.Name, photo: @user.Photo, postsCount: @user.PostsCounter %>
+</div>
+<div class="container border border-dark">
+    <h3>Bio</h3>
+    <p><%= @user.Bio %></p><br>
+</div>
+
+<ul class="list-group container">
+    <% @user.three_recent_posts.each_with_index do |post, idx| %>
+        <li class="list-group-item mt-4 border border-dark">
+            <h3>Post #<%= idx + 1 %></h3>
+            <%= render 'shared/post', title: post.Title, text: post.Text, commentsCounter: post.CommentsCounter, likesCounter: post.LikesCounter %>
+        </li>
+    <% end %>
+</ul>
+<div class="container d-flex justify-content-between">
+    <%= link_to "/users/#{@user.id}/posts/", class: "btn btn-primary mt-4" do %>
+        See all posts
+    <% end %>
+</div>
+</div>
+
+

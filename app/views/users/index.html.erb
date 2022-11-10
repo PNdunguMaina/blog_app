@@ -1,1 +1,9 @@
-<p>List of all users</p>
+<ul class="list-group">
+	<% @users.each do |user| %>
+		<%= link_to "/users/#{user.id}/", class: "text-decoration-none" do  %>
+		<li class="list-group-item">
+			<%= render 'shared/user', name: user.Name, photo: user.Photo, postsCount: user.PostsCounter %>
+		</li>
+	<% end %>
+    <% end %>
+</ul>
