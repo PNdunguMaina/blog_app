@@ -16,6 +16,9 @@ Rails.application.routes.draw do
 
   # route to create comment
   post 'users/:user_id/posts/:id/', to: 'posts#create_comment', as: 'create_comment'
+
+  # route to post like
+  post '/users/:user_id/posts/:id/like', to: 'posts#add_like', as: 'likes'
   
 end
 
