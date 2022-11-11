@@ -9,4 +9,8 @@ class PostsController < ApplicationController
     @user = @post.author
     @comments = @post.comments
   end
+
+  def new
+    @post = Post.new
+  end
 end
