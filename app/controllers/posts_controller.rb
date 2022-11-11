@@ -14,6 +14,7 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  # Create post
   def create_post
     # new object from params
     @post = Post.create(post_params)
@@ -34,9 +35,29 @@ class PostsController < ApplicationController
     end
   end
 
+  # Create comment
+  def create_comment
+    # new object from params
+    @comment = Comment.new(comment_params)
+    @comment.author = current_user
+    @comment.post = Post.find(params[:id])
+
+    if @comment.save
+      flash[:success] = 'Comment created successfully!'
+      redirect_to user_post_path
+    else
+      flash.now[:error] = 'Error creating comment!'
+      render :new
+    end
+  end
+
   private
 
   def post_params
     params.require(:post).permit(:Title, :Text)
+  end
+
+  def comment_params
+    params.require(:form_comment).permit(:Text)
   end
 end
