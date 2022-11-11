@@ -8,6 +8,11 @@
         <h3><%= @post.Title %></h3>
         <p><%= @post.Text %><br><p>
     </div>
+    <div class="d-flex justify-content-end">
+    <%= form_with model: @like, url: likes_path, class: 'form-group' do |form| %>
+      	<%= form.submit 'Like', class: "btn btn-danger mt-3" %>
+    <% end %>
+    </div>
     <div>
         <% @comments.each_with_index do |comment, idx| %>
             <p>
@@ -16,10 +21,18 @@
         <% end %>
     </div>
     <div class="container align-items-center">
-    <%= link_to "/users/#{@user.id}/posts/", class: "btn btn-primary mt-4" do %>
+        <%= link_to "/users/#{@user.id}/posts/", class: "btn btn-primary mt-4" do %>
         Back
-    <% end %>
-</div>
+        <% end %>
+    </div>
+     <div class="container col-sm-4">
+      <%= form_with model: @comment, url: user_post_path, class: 'form-group', scope: :form_comment  do |form| %>
+      	<%= form.text_area :text, class: 'form-control' %>
+        <div class="d-flex justify-content-end">
+      	    <%= form.submit 'Add comment', class: "btn btn-primary mt-4 mb-3" %>
+        </div>
+      <% end %>
+    </div>
     
 </div>
 
