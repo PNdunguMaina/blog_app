@@ -61,9 +61,6 @@ group :development, :test do
   # replaces Rails fixtures for generating data to use in the tests
   gem 'factory_bot_rails'
 
-  # provides helper methods that make integration testing easier
-  gem 'capybara'
-
   # allows us to manage our testing database with precision: we decide when to wipe data (e.g. after, before tests)
   gem 'database_cleaner'
 
@@ -92,6 +89,10 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
+
+  # provides helper methods that make integration testing easier
+  gem 'capybara'
+
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
