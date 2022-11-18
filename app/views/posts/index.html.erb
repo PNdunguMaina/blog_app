@@ -11,13 +11,23 @@
                     
                 </li>
 
+                <% post.five_recent_comments.each do |comment| %>
+				<li class="list-group-item">
+					<%= User.find(comment.author_id).Name %>: <%= comment.Text %>
+				</li>
+			<% end %>
+
             <% end %>
         <% end %>
     </ul>
-    <div class="container align-items-center">
-    <%= link_to "/users/#{@user.id}/", class: "btn btn-primary mt-4" do %>
-        Back
-    <% end %>
-</div>
+    <div class="container d-flex justify-content-between">
+        <%= link_to "/users/#{@user.id}/", class: "btn btn-primary mt-4" do %>
+            Back
+        <% end %>
+
+        <%= link_to "/users/#{@user.id}/posts", class: "btn btn-secondary mt-4" do %>
+            Pagination
+        <% end %>
+    </div>
 </div>
 
