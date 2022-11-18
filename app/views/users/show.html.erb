@@ -10,10 +10,12 @@
 
 <ul class="list-group container">
     <% @user.three_recent_posts.each_with_index do |post, idx| %>
-        <li class="list-group-item mt-4 border border-dark">
-            <h3>Post #<%= idx + 1 %></h3>
-            <%= render 'shared/post', title: post.Title, text: post.Text, commentsCounter: post.CommentsCounter, likesCounter: post.LikesCounter %>
-        </li>
+        <%= link_to "/users/#{@user.id}/posts/#{post.id}/", class: "user text-decoration-none" do  %>
+            <li class="list-group-item mt-4 border border-dark">
+                <h3>Post #<%= idx + 1 %></h3>
+                <%= render 'shared/post', title: post.Title, text: post.Text, commentsCounter: post.CommentsCounter, likesCounter: post.LikesCounter %>
+            </li>
+        <% end %>
     <% end %>
 </ul>
 <div class="container d-flex justify-content-between">

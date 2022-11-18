@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :system do
+RSpec.describe User, type: :feature do
   before :each do
     @first_user = User.create(Name: 'John Doe',
                               # rubocop:disable Layout/LineLength
@@ -14,7 +14,7 @@ RSpec.describe User, type: :system do
 
   context 'User index page' do
     it 'displays the username of all other users' do
-      visit '/users/'
+      visit users_path
       expect(page).to have_content('John Doe')
     end
 
@@ -49,7 +49,7 @@ RSpec.describe User, type: :system do
 
     it 'displays the number of posts the user has written' do
       visit "/users/#{@first_user.id}/"
-      expect(page).to have_content('Number of posts: 1')
+      expect(page).to have_content('Number of posts: 4')
     end
 
     it 'displays  the user bio' do
@@ -60,14 +60,23 @@ RSpec.describe User, type: :system do
 
     it 'displays the user first 3 posts' do
       visit "/users/#{@first_user.id}/"
-      expect(page).to have_content('Slamander')
-      expect(page).to have_content('Cactus')
-      expect(page).to have_content('Agikuyu')
+      expect(page).to have_content(@fourth_post.Title)
+      expect(page).to have_content(@third_post.Title)
+      expect(page).to have_content(@second_post.Title)
+      expect(page).to have_content(@fourth_post.Text)
+      expect(page).to have_content(@third_post.Text)
+      expect(page).to have_content(@second_post.Text)
     end
 
     it 'displays a button that lets me view all of a user posts' do
       visit "/users/#{@first_user.id}/"
       expect(page).to have_link('See all posts')
+    end
+
+    it 'When I click a user post,  it redirects me to that post show page' do
+      visit "/users/#{@first_user.id}/"
+      click_link @fourth_post.Title
+      expect(page).to have_current_path("/users/#{@first_user.id}/posts/#{@fourth_post.id}/")
     end
 
     it 'When I click to see all posts, it redirects me to the user post index page' do
